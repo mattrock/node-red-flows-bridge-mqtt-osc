@@ -1,0 +1,274 @@
+[
+    {
+        "id": "16f7fe24.b1f9d2",
+        "type": "tab",
+        "label": "EOS control",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f6dd49e0.d55f28",
+        "type": "udp in",
+        "z": "16f7fe24.b1f9d2",
+        "name": "",
+        "iface": "",
+        "port": "4712",
+        "ipv": "udp4",
+        "multicast": "false",
+        "group": "",
+        "datatype": "buffer",
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "bc476e73.ae3bc"
+            ]
+        ]
+    },
+    {
+        "id": "bc476e73.ae3bc",
+        "type": "osc",
+        "z": "16f7fe24.b1f9d2",
+        "name": "",
+        "path": "",
+        "metadata": false,
+        "x": 550,
+        "y": 100,
+        "wires": [
+            [
+                "a1b3ddf1.6ce6e",
+                "c99623b74785c58f"
+            ]
+        ]
+    },
+    {
+        "id": "a1b3ddf1.6ce6e",
+        "type": "mqtt out",
+        "z": "16f7fe24.b1f9d2",
+        "name": "",
+        "topic": "",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e080d3bf019e2a9e",
+        "x": 690,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "cb9095d4.73fcd8",
+        "type": "osc",
+        "z": "16f7fe24.b1f9d2",
+        "name": "",
+        "path": "",
+        "metadata": false,
+        "x": 410,
+        "y": 260,
+        "wires": [
+            [
+                "f0a814a9ebae165e"
+            ]
+        ]
+    },
+    {
+        "id": "114e0d0b.361113",
+        "type": "inject",
+        "z": "16f7fe24.b1f9d2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "/eos/fader/1/config/10",
+        "payload": "",
+        "payloadType": "str",
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "cb9095d4.73fcd8"
+            ]
+        ]
+    },
+    {
+        "id": "27a3abf2.c0e214",
+        "type": "udp out",
+        "z": "16f7fe24.b1f9d2",
+        "name": "",
+        "addr": "192.168.99.210",
+        "iface": "",
+        "port": "4711",
+        "ipv": "udp4",
+        "outport": "",
+        "base64": true,
+        "multicast": "false",
+        "x": 750,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "f0a814a9ebae165e",
+        "type": "rbe",
+        "z": "16f7fe24.b1f9d2",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 550,
+        "y": 260,
+        "wires": [
+            [
+                "27a3abf2.c0e214",
+                "c99623b74785c58f"
+            ]
+        ]
+    },
+    {
+        "id": "502dad823470e224",
+        "type": "mqtt in",
+        "z": "16f7fe24.b1f9d2",
+        "name": "",
+        "topic": "eos/user/2/#",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "e080d3bf019e2a9e",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "a1a1fa43bdfbe04d"
+            ]
+        ]
+    },
+    {
+        "id": "c99623b74785c58f",
+        "type": "debug",
+        "z": "16f7fe24.b1f9d2",
+        "name": "EOS debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "a1a1fa43bdfbe04d",
+        "type": "change",
+        "z": "16f7fe24.b1f9d2",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "'/' & topic",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 250,
+        "y": 260,
+        "wires": [
+            [
+                "cb9095d4.73fcd8"
+            ]
+        ]
+    },
+    {
+        "id": "45caa7de504806fd",
+        "type": "comment",
+        "z": "16f7fe24.b1f9d2",
+        "name": "OSC/MQTT bridge",
+        "info": "",
+        "x": 90,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "fe091d8e687fc10e",
+        "type": "comment",
+        "z": "16f7fe24.b1f9d2",
+        "name": "OSC -> MQTT",
+        "info": "",
+        "x": 100,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "8563884d324fe6c9",
+        "type": "comment",
+        "z": "16f7fe24.b1f9d2",
+        "name": "MQTT -> OSC",
+        "info": "",
+        "x": 90,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6a376e4e0715aca7",
+        "type": "comment",
+        "z": "16f7fe24.b1f9d2",
+        "name": "EOS fader config - required",
+        "info": "",
+        "x": 170,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "e080d3bf019e2a9e",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
