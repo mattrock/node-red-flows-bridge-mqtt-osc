@@ -13,3 +13,5 @@ EOS fader, the device can then be linked to physical devices on the HomeSeer net
 The current use scenario utilizes circular linking between a no-load Insteon wall dimmer switch and fader 2 in fader bank 1 in ETC EOS.
 The EOS fader is loaded with a bright cue for all accent lights in the room. When the wall switch is turned up, the fader will increase
 with the bright cue piling on any effects which may be curretnly running on the accent light.
+
+[ETC Show Control via OSC](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiKt6Oaw9j5AhUYg4kEHVtGA8YQFnoECAgQAQ&url=https%3A%2F%2Fwww.etcconnect.com%2Fworkarea%2FDownloadAsset.aspx%3Fid%3D10737461372&usg=AOvVaw2IDLnAU1G4G6YPtzqAtOHK)
